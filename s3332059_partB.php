@@ -6,7 +6,7 @@
   
 <body>
 
-$result = mysql_query("Select * from region");
+<?php $result = mysql_query("Select * from region"); ?>
 
 // $result is populated from mysql query
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
