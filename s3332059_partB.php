@@ -26,7 +26,11 @@
         ?>
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
-  Region </br>
+
+  Wine Name <input type="text" name="winename"><br>
+  Winery Name <input type="text" name="wineryname"><br>
+
+  Region <br>
      
   <select value="regionName">
   <?php
@@ -41,7 +45,8 @@
 ?>
   </select>
 
- Grape Variety </br>
+ <br>
+ <br> Grape Variety <br>
 
   <select value="grapeVariety">
   <?php
@@ -51,15 +56,53 @@
   ?>
   
   <option value="$grapeVariety"><?php echo $row["variety"]?></option>;
-<?php
+ <?php
  }
 
-?>
+ ?>
+ </select>
+ <br>
+ <br> Years <br>
 
+ <select value="yearsUp">
+ <?php
+ $result = mysql_query("SELECT DISTINCT year FROM wine ORDER BY year");
+
+ while($row = mysql_fetch_array($result)) {
+ ?>
+
+ <option value="$yearsUp"><?php echo $row["year"]?></option>;
+
+<?php
+}
+
+?>
 </select>
 
-  <input type="submit" name="submit" value="Run Query">
-</form>
+ <select value="yearsDown">
+ <?php
+ $result = mysql_query("SELECT DISTINCT year FROM wine ORDER BY year");
+
+ while($row = mysql_fetch_array($result)) {
+ ?>
+
+ <option value="$yearsUp"><?php echo $row["year"]?></option>;
+
+<?php
+}
+
+?>
+</select>
+
+<br>
+<br> Minimum number of wine in stock <input type="text" name="minStock">
+<br> Minimum number of wine ordered <input type="text" name="minOrder">
+
+<br>
+<br>
+
+  <input type="submit" name="submit" value="Search">
+ </form>
 
 </body>
   
